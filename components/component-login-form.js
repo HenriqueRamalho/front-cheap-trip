@@ -21,6 +21,7 @@ function LoginForm() {
 			</div>
 
 			<div className={styles.login_box}>
+				<p>ou entrar com</p>
 				<button className={forms['button'] + " " + forms['button_social']}>
 					<Image
 						src={"/images/google.svg"}
@@ -34,7 +35,7 @@ function LoginForm() {
 
 			<div className={styles.login_box}>
 				Ainda não é cadastrado? <br />
-				<Link href="/#">
+				<Link href="/cadastro">
 					Cadastre-se agora
 				</Link>
 			</div>

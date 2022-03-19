@@ -1,3 +1,9 @@
+.header_form{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 .input_form {
     border: 1px solid #006BA8;
     box-sizing: border-box;
@@ -6,6 +12,11 @@
     padding: 13px 8px;
 		margin-bottom: 20px;
     width: 100%;
+}
+
+.checkbox_label {
+	margin-bottom: 20px;
+	display: block;
 }
 
 .button {
