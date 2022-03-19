@@ -1,0 +1,39 @@
+.input_form {
+    border: 1px solid #006BA8;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 13px 8px;
+		margin-bottom: 20px;
+    width: 100%;
+}
+
+.button {
+	background-color: #006BA8;
+	border: 1px solid #006BA8;
+	box-sizing: border-box;
+	border-radius: 50px;
+	color: #FFFFFF;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 22px;
+	padding: 13px 8px;
+	width: 100%;
+}
+
+.button_social {
+	align-items: center;
+	background-color: #E9F4FF;
+	color: #006BA8;
+	display: flex;
+	font-family: 'Nunito';
+	font-style: normal;
+	font-weight: 800;
+	font-size: 16px;
+	justify-content: center;
+	line-height: 22px;
+}
+
+.btn_label {
+	margin-left: 10px;
+}

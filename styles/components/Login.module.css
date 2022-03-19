@@ -1,0 +1,23 @@
+.login_title {
+    color: #006BA8;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 44px;
+}
+
+.login_box {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	text-align: center;
+}
+
+
+.login_box a {
+	color: #006BA8;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 16px;
+}
+
