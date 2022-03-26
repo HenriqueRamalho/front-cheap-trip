@@ -1,0 +1,54 @@
+.cardImage {
+	display: block;
+}
+
+.description {
+	padding: 20px
+}
+
+.tags {
+	display: flex;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.tags div {
+	background-color: #F2994A;
+	display: block;
+	padding: 5px 10px;
+	color: white;
+	border-radius: 4px;
+	margin-right: 5px;
+}
+
+.tags div:last-child {
+	margin-right: 0;
+}
+
+.cardtitle {
+	color: #4F4F4F;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 22px;
+	margin: 0 0 20px;
+	font-family: 'Nunito';
+}
+
+.item_incluso {
+	display: flex;
+}
+
+.icon_incluso {
+	display: block;
+	margin-right: 25px;
+}
+
+.card_price {
+	font-family: 'Nunito';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 33px;
+	color: #006BA8;
+}

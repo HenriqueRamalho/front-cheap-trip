@@ -7,7 +7,7 @@ function LoginForm() {
 	return (
 		<>
 			<h2 className={styles.login_title}> Entrar </h2>
-			<form>
+			<form action="/principal">
 				<input
 					type={'text'}
 					className={forms.input_form}

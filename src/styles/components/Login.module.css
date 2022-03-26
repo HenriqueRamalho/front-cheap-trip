@@ -6,6 +6,10 @@
     line-height: 44px;
 }
 
+.login_title_medium {
+	font-size: 22px;
+}
+
 .login_box {
 	margin-top: 25px;
 	margin-bottom: 25px;
