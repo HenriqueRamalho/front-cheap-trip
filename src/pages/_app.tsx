@@ -1,9 +1,12 @@
 import React from 'react'
 import Head from 'next/head'
 import { AppProps } from 'next/app'
-import { ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from 'theme'
+import GlobalStyles from '@mui/material/GlobalStyles'
+import globalCss from 'styles/globalCss'
+
 const MyApp = (props: AppProps) => {
 	const { Component, pageProps } = props
 	React.useEffect(() => {
@@ -19,19 +22,14 @@ const MyApp = (props: AppProps) => {
 		<React.Fragment>
 			<Head>
 				<title>Cheap trip</title>
-				<link
-					rel="shortcut icon"
-					href="/img/favicon/geraforte_favicon_98_x_77.png"
-					type="image/x-icon"
-				/>
 				<meta
 					name="viewport"
 					content="minimum-scale=1, initial-scale=1, width=device-width"
 				/>
 			</Head>
 			<ThemeProvider theme={theme}>
-				{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 				<CssBaseline />
+				<GlobalStyles styles={globalCss} />
 				<Component {...pageProps} />
 			</ThemeProvider>
 		</React.Fragment>
