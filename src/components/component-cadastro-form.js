@@ -2,6 +2,7 @@ import Link from 'next/link'
 import styles from '../styles/components/Login.module.css'
 import forms from '../styles/components/Form.module.css'
 import Image from 'next/image'
+import Button from '@mui/material/Button'
 
 function CadastroForm() {
 	return (
@@ -32,18 +33,21 @@ function CadastroForm() {
 					className={forms.input_form}
 					placeholder={'Confirme sua Senha'}
 				/>
-
 				<label htmlFor="aceite" className={forms.checkbox_label}>
 					<input type={'checkbox'} id="aceite" /> Eu aceito os termos e
 					condições.
 				</label>
-
-				<button className={forms.button}> Cadastrar </button>
+				<Button variant="contained" className={forms.button}>
+					Cadastrar
+				</Button>
 			</form>
 
 			<div className={styles.login_box}>
 				<p>ou cadastrar com</p>
-				<button className={forms['button'] + ' ' + forms['button_social']}>
+				<Button
+					variant="outlined"
+					className={forms['button'] + ' ' + forms['button_social']}
+				>
 					<Image
 						src={'/images/google.svg'}
 						alt="Google"
@@ -52,7 +56,7 @@ function CadastroForm() {
 						className={forms.google_img}
 					/>{' '}
 					<span className={forms.btn_label}>Google</span>
-				</button>
+				</Button>
 			</div>
 		</>
 	)
