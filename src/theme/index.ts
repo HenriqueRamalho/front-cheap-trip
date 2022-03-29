@@ -1,10 +1,8 @@
-import { Button } from '@mui/material'
 import {
 	createTheme,
 	responsiveFontSizes,
 	ThemeOptions
 } from '@mui/material/styles'
-import { fontSize } from '@mui/system'
 
 const theme: ThemeOptions = {
 	palette: {
