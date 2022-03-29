@@ -12,6 +12,20 @@ const theme: ThemeOptions = {
 		secondary: {
 			main: '#FFBC48'
 		}
+	},
+	typography: {
+		fontFamily: "'Nunito', 'sans-serif'",
+
+		h2: {
+			color: '#006BA8',
+			fontWeight: 900,
+			fontSize: '2rem'
+		},
+
+		button: {
+			textTransform: 'none',
+			fontWeight: 700
+		}
 	}
 }
 
