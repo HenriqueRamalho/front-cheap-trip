@@ -3,25 +3,12 @@ import type { NextPage } from 'next'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Grid from '@mui/material/Grid'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
-import InputLabel from '@mui/material/InputLabel'
-import MenuItem from '@mui/material/MenuItem'
-import FormControl from '@mui/material/FormControl'
-import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import Tabs from '@mui/material/Tabs'
-import Tab from '@mui/material/Tab'
 import { Checkbox } from '@mui/material'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
 const NewGroup: NextPage = () => {
-	const [local, setAge] = React.useState('')
-
-	const handleChange = (event: SelectChangeEvent) => {
-		setAge(event.target.value as string)
-	}
-
 	return (
 		<>
 			<div

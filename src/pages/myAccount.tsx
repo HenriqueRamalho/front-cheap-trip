@@ -10,8 +10,6 @@ import FormControl from '@mui/material/FormControl'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import Tabs from '@mui/material/Tabs'
-import Tab from '@mui/material/Tab'
 
 const MyAccount: NextPage = () => {
 	const [local, setAge] = React.useState('')
