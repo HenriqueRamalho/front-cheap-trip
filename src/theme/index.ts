@@ -9,6 +9,9 @@ const theme: ThemeOptions = {
 		primary: {
 			main: '#006BA8'
 		},
+		white: {
+			main: '#ffffff'
+		},
 		secondary: {
 			main: '#FFBC48'
 		}
