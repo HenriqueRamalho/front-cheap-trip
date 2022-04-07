@@ -6,6 +6,9 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from 'theme'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import globalCss from 'styles/globalCss'
+import Footer from 'components/Footer'
+import Header from 'components/header-component'
+import Topbar from 'components/Topbar'
 
 const MyApp = (props: AppProps) => {
 	const { Component, pageProps } = props
@@ -30,7 +33,11 @@ const MyApp = (props: AppProps) => {
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
 				<GlobalStyles styles={globalCss} />
-				<Component {...pageProps} />
+				<Topbar></Topbar>
+				<main>
+					<Component {...pageProps} />
+				</main>
+				<Footer></Footer>
 			</ThemeProvider>
 		</React.Fragment>
 	)
