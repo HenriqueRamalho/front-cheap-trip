@@ -1,32 +1,27 @@
 import * as React from 'react'
 import type { NextPage } from 'next'
-import Alert from '@mui/material/Alert'
 import BottomNavbar from 'components/BottomNavbar'
-import Button from '@mui/material/Button'
-import { Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
+import { useTheme } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import CarouselWithCards from 'components/CarouselWithCards'
 
 const Dashboard: NextPage = () => {
+	const theme = useTheme()
+	const isMoreThenMd = useMediaQuery(theme.breakpoints.up('md'))
+
 	return (
 		<div>
-			<Alert severity="error">This is an error alert — check it out!</Alert>
-			<Alert severity="warning">This is a warning alert — check it out!</Alert>
-			<Alert severity="info">This is an info alert — check it out!</Alert>
-			<Alert severity="success">This is a success alert — check it out!</Alert>
-			<Typography variant="h1">h1. Heading example</Typography>;
-			<Button color="primary" variant="contained">
-				Primary Contained
-			</Button>
-			<Button color="secondary" variant="contained">
-				Contained Secondary
-			</Button>
-			<Button color="primary">primary</Button>
-			<Button color="secondary">secondary</Button>
-			<Button color="success" variant="contained">
-				Success
-			</Button>
-			<Button color="warning" variant="contained">
-				warning
-			</Button>
+			<div>{`isMoreThenMd: ${isMoreThenMd}`}</div>
+			<Typography variant="h2" align="center">
+				Solicitar contato do vendedor
+			</Typography>
+			<Box sx={{ py: 1 }}>
+				<CarouselWithCards />
+			</Box>
+			<Box sx={{ py: 1 }}>
+				<CarouselWithCards />
+			</Box>
 			<BottomNavbar />
 		</div>
 	)
