@@ -7,6 +7,9 @@ import theme from 'theme'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import globalCss from 'styles/globalCss'
 
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
 const MyApp = (props: AppProps) => {
 	const { Component, pageProps } = props
 	React.useEffect(() => {

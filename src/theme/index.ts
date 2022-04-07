@@ -12,6 +12,26 @@ const theme: ThemeOptions = {
 		secondary: {
 			main: '#FFBC48'
 		}
+	},
+	components: {
+		MuiBottomNavigation: {
+			styleOverrides: {
+				root: {
+					backgroundColor: '#006BA8'
+				}
+			}
+		},
+		MuiBottomNavigationAction: {
+			styleOverrides: {
+				root: {
+					color: 'white'
+				},
+				label: {
+					color: '#ffffff',
+					fontSize: 12
+				}
+			}
+		}
 	}
 }
 

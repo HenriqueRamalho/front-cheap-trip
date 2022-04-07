@@ -14,14 +14,16 @@ export default function FixedBottomNavigation() {
 	const ref = React.useRef<HTMLDivElement>(null)
 
 	return (
-		<Box sx={{ pb: 7 }} ref={ref}>
+		<Box sx={{ pb: 7, display: { md: 'none' } }} ref={ref}>
 			<Paper
 				sx={{
 					position: 'fixed',
 					bottom: 0,
 					left: 0,
 					right: 0,
-					bgcolor: 'secondary.main'
+					'& .MuiBottomNavigationAction-root, .Mui-selected, svg': {
+						color: 'white'
+					}
 				}}
 				elevation={3}
 			>
@@ -35,12 +37,12 @@ export default function FixedBottomNavigation() {
 					<BottomNavigationAction
 						label="Início"
 						href="/dashboard"
-						icon={<HomeIcon />}
+						icon={<HomeIcon fontSize="small" />}
 					/>
 					<BottomNavigationAction
 						label="Notificações"
 						href="#"
-						icon={<NotificationsIcon />}
+						icon={<NotificationsIcon fontSize="small" />}
 					/>
 					<BottomNavigationAction
 						href="#"
@@ -49,12 +51,12 @@ export default function FixedBottomNavigation() {
 					<BottomNavigationAction
 						label="Salvos"
 						href="#"
-						icon={<BookmarkIcon />}
+						icon={<BookmarkIcon fontSize="small" />}
 					/>
 					<BottomNavigationAction
 						label="Conta"
 						href="#"
-						icon={<AccountCircleIcon />}
+						icon={<AccountCircleIcon fontSize="small" />}
 					/>
 				</BottomNavigation>
 			</Paper>
