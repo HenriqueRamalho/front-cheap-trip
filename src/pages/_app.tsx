@@ -10,6 +10,9 @@ import Footer from 'components/Footer'
 import Header from 'components/header-component'
 import Topbar from 'components/Topbar'
 
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
 const MyApp = (props: AppProps) => {
 	const { Component, pageProps } = props
 	React.useEffect(() => {
