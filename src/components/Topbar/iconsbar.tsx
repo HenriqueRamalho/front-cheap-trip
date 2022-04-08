@@ -27,6 +27,7 @@ export default function Iconsbar() {
 					variant="contained"
 					color="primary"
 					disableElevation
+					disableRipple
 					disableFocusRipple
 					href={ROUTES.HOME}
 					startIcon={<NotificationsIcon />}
@@ -39,6 +40,7 @@ export default function Iconsbar() {
 					variant="contained"
 					color="primary"
 					disableElevation
+					disableRipple
 					disableFocusRipple
 					href={ROUTES.NEW_GROUP}
 					startIcon={<BookmarkIcon />}
@@ -51,6 +53,7 @@ export default function Iconsbar() {
 					variant="contained"
 					color="primary"
 					disableElevation
+					disableRipple
 					disableFocusRipple
 					href={ROUTES.MY_ACCOUNT}
 					startIcon={<AccountCircleIcon />}
