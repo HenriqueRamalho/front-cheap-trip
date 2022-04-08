@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import Header from '../components/header-component'
 import LoginForm from '../components/component-login-form'
 
-const Home: NextPage = () => {
+const Login: NextPage = () => {
 	return (
 		<div className={styles.container}>
 			<Header />
@@ -12,4 +12,4 @@ const Home: NextPage = () => {
 	)
 }
 
-export default Home
+export default Login

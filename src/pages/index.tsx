@@ -1,35 +1,65 @@
 import * as React from 'react'
 import type { NextPage } from 'next'
-import Alert from '@mui/material/Alert'
 import BottomNavbar from 'components/BottomNavbar'
-import Button from '@mui/material/Button'
-import { Typography } from '@mui/material'
+import { Box, InputAdornment, Typography } from '@mui/material'
+import CarouselWithCards from 'components/CarouselWithCards'
+import TextField from '@mui/material/TextField'
+import SearchIcon from '@mui/icons-material/Search'
+import DiscoveryDestinations from 'components/DiscoveryDestinations'
+import DontYouFindYourDestiny from 'components/DontYouFindYourDestiny'
 
-const Dashboard: NextPage = () => {
+const Index: NextPage = () => {
 	return (
 		<div>
-			<Alert severity="error">This is an error alert — check it out!</Alert>
-			<Alert severity="warning">This is a warning alert — check it out!</Alert>
-			<Alert severity="info">This is an info alert — check it out!</Alert>
-			<Alert severity="success">This is a success alert — check it out!</Alert>
-			<Typography variant="h1">h1. Heading example</Typography>;
-			<Button color="primary" variant="contained">
-				Primary Contained
-			</Button>
-			<Button color="secondary" variant="contained">
-				Contained Secondary
-			</Button>
-			<Button color="primary">primary</Button>
-			<Button color="secondary">secondary</Button>
-			<Button color="success" variant="contained">
-				Success
-			</Button>
-			<Button color="warning" variant="contained">
-				warning
-			</Button>
+			<Box
+				sx={{
+					maxWidth: 768,
+					margin: '0 auto',
+					paddingTop: 4,
+					paddingX: 2,
+					paddingBottom: 4
+				}}
+			>
+				<Typography variant="h2">Procure por destinos ou grupos</Typography>
+				<TextField
+					id="input-with-icon-textfield"
+					variant="outlined"
+					fullWidth
+					InputProps={{
+						startAdornment: (
+							<InputAdornment position="start">
+								<SearchIcon />
+							</InputAdornment>
+						)
+					}}
+					sx={{
+						marginTop: 2
+					}}
+				/>
+			</Box>
+			<Box
+				sx={{
+					maxWidth: 768,
+					margin: '0 auto',
+					paddingX: 2
+				}}
+			>
+				<Typography variant="h2">Pacotes de viagem em destaque</Typography>
+			</Box>
+
+			<Box sx={{ py: 1, paddingTop: 3 }}>
+				<CarouselWithCards />
+			</Box>
+			<Box sx={{ py: 1 }}>
+				<CarouselWithCards />
+			</Box>
+			<Box>
+				<DiscoveryDestinations />
+			</Box>
+			<DontYouFindYourDestiny />
 			<BottomNavbar />
 		</div>
 	)
 }
 
-export default Dashboard
+export default Index
