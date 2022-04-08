@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import Header from '../components/header-component'
 import CadastroForm from '../components/component-cadastro-form'
 
-const Home: NextPage = () => {
+const Signup: NextPage = () => {
 	return (
 		<div className={styles.container}>
 			<Header />
@@ -12,4 +12,4 @@ const Home: NextPage = () => {
 	)
 }
 
-export default Home
+export default Signup
