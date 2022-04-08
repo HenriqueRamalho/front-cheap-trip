@@ -6,14 +6,14 @@ import Typography from '@mui/material/Typography'
 import { Box, CardActionArea } from '@mui/material'
 import HotelIcon from '@mui/icons-material/Hotel'
 import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive'
-
 import ExpenseScale from './ExpenseScale'
+import { ROUTES } from 'utils/routes'
 
 export default function CardPack() {
 	return (
 		<Box sx={{ paddingX: 1 }}>
 			<Card sx={{ width: '100%' }}>
-				<CardActionArea>
+				<CardActionArea href={ROUTES.CONTACT_SALLES}>
 					<CardMedia
 						component="img"
 						height="140"
