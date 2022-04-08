@@ -7,7 +7,6 @@ import theme from 'theme'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import globalCss from 'styles/globalCss'
 import Footer from 'components/Footer'
-import Header from 'components/header-component'
 import Topbar from 'components/Topbar'
 
 import 'slick-carousel/slick/slick.css'
