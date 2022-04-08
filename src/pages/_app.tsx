@@ -6,6 +6,8 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from 'theme'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import globalCss from 'styles/globalCss'
+import Footer from 'components/Footer'
+import Topbar from 'components/Topbar'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -33,7 +35,11 @@ const MyApp = (props: AppProps) => {
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
 				<GlobalStyles styles={globalCss} />
-				<Component {...pageProps} />
+				<Topbar></Topbar>
+				<main>
+					<Component {...pageProps} />
+				</main>
+				<Footer></Footer>
 			</ThemeProvider>
 		</React.Fragment>
 	)

@@ -5,7 +5,7 @@ import Link from '@mui/material/Link'
 
 export default function Footer() {
 	return (
-		<Box sx={{ bgcolor: 'grey.300' }}>
+		<Box sx={{ bgcolor: 'grey.300' }} marginTop={5}>
 			<Grid container direction="column">
 				<Grid item pt={4} pb={2}>
 					<Typography align="center">
