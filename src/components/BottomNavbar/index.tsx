@@ -8,6 +8,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
 import SearchIcon from '@mui/icons-material/Search'
+import { ROUTES } from 'utils/routes'
 
 export default function FixedBottomNavigation() {
 	const [value, setValue] = React.useState(0)
@@ -36,26 +37,26 @@ export default function FixedBottomNavigation() {
 				>
 					<BottomNavigationAction
 						label="Início"
-						href="/dashboard"
+						href={ROUTES.HOME}
 						icon={<HomeIcon fontSize="small" />}
 					/>
 					<BottomNavigationAction
 						label="Notificações"
-						href="#"
+						href={ROUTES.HOME}
 						icon={<NotificationsIcon fontSize="small" />}
 					/>
 					<BottomNavigationAction
-						href="#"
+						href={ROUTES.HOME}
 						icon={<SearchIcon fontSize="large" />}
 					/>
 					<BottomNavigationAction
 						label="Salvos"
-						href="#"
+						href={ROUTES.HOME}
 						icon={<BookmarkIcon fontSize="small" />}
 					/>
 					<BottomNavigationAction
 						label="Conta"
-						href="#"
+						href={ROUTES.MY_ACCOUNT}
 						icon={<AccountCircleIcon fontSize="small" />}
 					/>
 				</BottomNavigation>

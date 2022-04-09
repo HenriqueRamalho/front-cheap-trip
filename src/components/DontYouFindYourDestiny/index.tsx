@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Box, Button, Typography } from '@mui/material'
 import Image from 'next/image'
 import Grid from '@mui/material/Grid'
+import { ROUTES } from 'utils/routes'
 
 const DontYouFindYourDestiny = () => {
 	return (
@@ -37,7 +38,7 @@ const DontYouFindYourDestiny = () => {
 							paddingTop: 3
 						}}
 					>
-						<Button size={'large'} variant="contained" onClick={() => null}>
+						<Button size={'large'} variant="contained" href={ROUTES.NEW_GROUP}>
 							Ir para os grupos
 						</Button>
 					</Box>
