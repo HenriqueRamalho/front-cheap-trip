@@ -7,5 +7,8 @@ export const ROUTES = {
 	SIGNUP: '/signup',
 	LOGIN: '/login',
 	DESTINY: '/destiny',
-	ALL_DESTINIES: '/listDestinies'
+	GO_TO_DESTINY: (id: number) => `/destiny/${id}`,
+	ALL_DESTINIES: '/destines',
+	GO_TO_GROUP: (id: number) => `/group/${id}`,
+	ALL_GROUPS: '/groups'
 }

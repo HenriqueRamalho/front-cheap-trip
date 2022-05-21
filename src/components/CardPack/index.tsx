@@ -7,13 +7,16 @@ import { Box, CardActionArea } from '@mui/material'
 import HotelIcon from '@mui/icons-material/Hotel'
 import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive'
 import ExpenseScale from './ExpenseScale'
-import { ROUTES } from 'utils/routes'
 
-export default function CardPack() {
+interface CardPackProps {
+	link?: string
+}
+
+export default function CardPack({ link = '' }: CardPackProps) {
 	return (
 		<Box sx={{ paddingX: 1 }}>
 			<Card sx={{ width: '100%' }}>
-				<CardActionArea href={ROUTES.DESTINY}>
+				<CardActionArea href={link}>
 					<CardMedia
 						component="img"
 						height="140"

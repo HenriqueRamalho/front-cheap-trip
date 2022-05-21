@@ -1,11 +1,11 @@
 import * as React from 'react'
+import CardPack from 'components/CardPack'
 import Slider from 'react-slick'
 import { useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import CardDestination from 'components/CardDestination'
-import { Box, Typography } from '@mui/material'
+import { ROUTES } from 'utils/routes'
 
-interface SimilarDestinationsProps {
+interface CarouselWithCardsProps {
 	maxWidth?: number
 	slideToShow?: {
 		default?: number
@@ -13,10 +13,10 @@ interface SimilarDestinationsProps {
 	}
 }
 
-const SimilarDestinations = ({
+const CarouselWithCardsGroups = ({
 	maxWidth = 768,
-	slideToShow = { default: 1, moreThenMd: 5 }
-}: SimilarDestinationsProps) => {
+	slideToShow = { default: 1, moreThenMd: 3 }
+}: CarouselWithCardsProps) => {
 	const theme = useTheme()
 	const isMoreThenMd = useMediaQuery(theme.breakpoints.up('md'))
 	const settings = {
@@ -36,13 +36,10 @@ const SimilarDestinations = ({
 				margin: '0 auto'
 			}}
 		>
-			<Box sx={{ py: 4, px: 2 }}>
-				<Typography variant="h2">Destinos semelhantes</Typography>
-			</Box>
 			<Slider {...settings}>
 				{[1, 2, 3, 4, 5, 6].map((item) => (
 					<div key={item} style={{ width: 300, padding: '0 0' }}>
-						<CardDestination />
+						<CardPack link={ROUTES.GO_TO_GROUP(1)} />
 					</div>
 				))}
 			</Slider>
@@ -50,4 +47,4 @@ const SimilarDestinations = ({
 	)
 }
 
-export default SimilarDestinations
+export default CarouselWithCardsGroups
