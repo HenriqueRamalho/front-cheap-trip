@@ -5,5 +5,7 @@ export const ROUTES = {
 	CONTACT_SALLES: '/contactSalles',
 	CONTACT_GROUP: '/contactGroup',
 	SIGNUP: '/signup',
-	LOGIN: '/login'
+	LOGIN: '/login',
+	DESTINY: '/destiny',
+	ALL_DESTINIES: '/listDestinies'
 }

@@ -13,7 +13,7 @@ export default function CardPack() {
 	return (
 		<Box sx={{ paddingX: 1 }}>
 			<Card sx={{ width: '100%' }}>
-				<CardActionArea href={ROUTES.CONTACT_SALLES}>
+				<CardActionArea href={ROUTES.DESTINY}>
 					<CardMedia
 						component="img"
 						height="140"
