@@ -51,6 +51,15 @@ const theme: ThemeOptions = {
 					fontSize: 12
 				}
 			}
+		},
+		// MuiFormControl-root-MuiTextField-root
+		// MuiInputBase-input-MuiOutlinedInput-input
+		MuiOutlinedInput: {
+			styleOverrides: {
+				root: {
+					borderColor: '1px solid red'
+				}
+			}
 		}
 	}
 }

@@ -29,7 +29,6 @@ const DontYouFindYourDestiny = () => {
 					>
 						Crie ou ingresse em um grupo para encontrar viajantes parceiros
 					</Typography>
-
 					<Box
 						sx={{
 							display: 'flex',
@@ -38,7 +37,7 @@ const DontYouFindYourDestiny = () => {
 							paddingTop: 3
 						}}
 					>
-						<Button size={'large'} variant="contained" href={ROUTES.NEW_GROUP}>
+						<Button size={'large'} variant="contained" href={ROUTES.ALL_GROUPS}>
 							Ir para os grupos
 						</Button>
 					</Box>

@@ -4,6 +4,7 @@ import { useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import CardDestination from 'components/CardDestination'
 import { Box, Button, Typography } from '@mui/material'
+import { ROUTES } from 'utils/routes'
 
 const DiscoveryDestinations = () => {
 	const theme = useTheme()
@@ -45,7 +46,7 @@ const DiscoveryDestinations = () => {
 					paddingTop: 3
 				}}
 			>
-				<Button size={'large'} variant="contained" onClick={() => null}>
+				<Button size={'large'} variant="contained" href={ROUTES.ALL_DESTINIES}>
 					Ver todos os destinos
 				</Button>
 			</Box>
