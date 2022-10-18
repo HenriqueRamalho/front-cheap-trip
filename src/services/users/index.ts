@@ -40,22 +40,18 @@ export const loginUser = async ({
 	email,
 	password
 }: LoginUser): Promise<LoginUserResponse | undefined> => {
-	try {
-		const { data } = await axiosInstance.post('/login', {
-			email,
-			password
-		})
+	const { data } = await axiosInstance.post('/login', {
+		email,
+		password
+	})
 
-		saveUserLoginOnSessionStorage({
-			_id: data._id,
-			email: data.email,
-			name: data.name,
-			token: data.token
-		})
-		return data
-	} catch (e) {
-		console.error(e)
-	}
+	saveUserLoginOnSessionStorage({
+		_id: data._id,
+		email: data.email,
+		name: data.name,
+		token: data.token
+	})
+	return data
 }
 
 const saveUserLoginOnSessionStorage = ({

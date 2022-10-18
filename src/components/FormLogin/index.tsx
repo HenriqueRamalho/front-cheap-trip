@@ -1,7 +1,16 @@
-import { Typography, Button, Stack, Grid, TextField, Box } from '@mui/material'
+import { useState } from 'react'
+import {
+	Typography,
+	Button,
+	Stack,
+	Grid,
+	TextField,
+	Box,
+	Alert
+} from '@mui/material'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
-import { getUserLoginOnSessionStorage, loginUser } from 'services/users'
+import { loginUser } from 'services/users'
 import { ROUTES } from 'utils/routes'
 
 const validationSchema = yup.object({
@@ -13,6 +22,7 @@ const validationSchema = yup.object({
 })
 
 function FormLogin() {
+	const [isShowLoginErorMessage, setIsShowLoginErorMessage] = useState(false)
 	const formik = useFormik({
 		initialValues: {
 			email: '',
@@ -20,11 +30,16 @@ function FormLogin() {
 		},
 		validationSchema: validationSchema,
 		onSubmit: async (values) => {
-			await loginUser({
-				email: values.email,
-				password: values.password
-			})
-			console.log(getUserLoginOnSessionStorage())
+			try {
+				await loginUser({
+					email: values.email,
+					password: values.password
+				})
+				setIsShowLoginErorMessage(false)
+			} catch (e) {
+				console.error(e)
+				setIsShowLoginErorMessage(true)
+			}
 		}
 	})
 
@@ -78,6 +93,12 @@ function FormLogin() {
 							helperText={formik.touched.password && formik.errors.password}
 						/>
 					</Grid>
+
+					{isShowLoginErorMessage && (
+						<Grid item xs={12}>
+							<Alert severity="error">Erro ao realizar login</Alert>
+						</Grid>
+					)}
 
 					<Grid item xs={12}>
 						<Stack spacing={2} direction="row">
