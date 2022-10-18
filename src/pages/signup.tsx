@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
 import Header from '../components/header-component'
-import CadastroForm from '../components/component-cadastro-form'
+import SignupForm from 'components/SignupForm'
 import { Box } from '@mui/material'
 
 const Signup: NextPage = () => {
@@ -17,7 +17,7 @@ const Signup: NextPage = () => {
 					margin: '0 auto'
 				}}
 			>
-				<CadastroForm />
+				<SignupForm />
 			</Box>
 		</div>
 	)
