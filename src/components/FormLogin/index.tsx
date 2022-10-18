@@ -15,10 +15,10 @@ import { ROUTES } from 'utils/routes'
 
 const validationSchema = yup.object({
 	email: yup
-		.string('Digite seu email')
+		.string()
 		.email('Informe um email válido')
 		.required('Email é obrigatório'),
-	password: yup.string('Digite uma senha').required('Senha é obrigatório')
+	password: yup.string().required('Senha é obrigatório')
 })
 
 function FormLogin() {

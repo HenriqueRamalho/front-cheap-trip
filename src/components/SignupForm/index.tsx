@@ -13,17 +13,17 @@ import { FormControlLabel, FormGroup } from '@mui/material'
 import { signupUser } from 'services/users'
 
 const validationSchema = yup.object({
-	name: yup.string('Digite seu nome').required('Nome é obrigatório'),
+	name: yup.string().required('Nome é obrigatório'),
 	email: yup
-		.string('Digite seu email')
+		.string()
 		.email('Informe um email válido')
 		.required('Email é obrigatório'),
 	password: yup
-		.string('Digite uma senha')
+		.string()
 		.min(8, 'A senha deve ter no mínimo 8 caracteres')
 		.required('Senha é obrigatório'),
 	passwordRepeated: yup
-		.string('Repita a senha')
+		.string()
 		.required('Por favor, repita a senha')
 		.oneOf([yup.ref('password')], 'As senhas não são iguais'),
 	termsAndConditions: yup.bool().required('Must Accept Terms and Conditions')
