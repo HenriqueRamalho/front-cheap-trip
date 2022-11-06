@@ -1,5 +1,6 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import type { NextPage } from 'next'
+import { useSession } from 'next-auth/react'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Grid from '@mui/material/Grid'
@@ -12,7 +13,19 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
 const MyAccount: NextPage = () => {
-	const [local, setAge] = React.useState('')
+	const [local, setAge] = useState('')
+	const { data: session, status } = useSession({
+		required: true,
+		onUnauthenticated() {
+			// The user is not authenticated, handle it here.
+		}
+	})
+
+	console.log('session: ', session)
+
+	if (status === 'loading') {
+		return <div>Loading or not authenticated...</div>
+	}
 
 	const handleChange = (event: SelectChangeEvent) => {
 		setAge(event.target.value as string)
