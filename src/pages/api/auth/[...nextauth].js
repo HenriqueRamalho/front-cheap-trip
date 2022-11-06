@@ -36,7 +36,19 @@ export const authOptions = {
 				return null
 			}
 		})
-	]
+	],
+	callbacks: {
+		jwt: async ({ token, user }) => {
+			user && (token.user = user)
+			return token
+		},
+		session: async ({ session, token }) => {
+			session.user = token.user
+			session.cheapTreapToken = token.user.token
+			return session
+		}
+	},
+	debug: process.env.NODE_ENV === 'development'
 }
 
 export default NextAuth(authOptions)
