@@ -3,6 +3,7 @@ import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
 import Header from '../components/header-component'
 import FormLogin from 'components/FormLogin'
+import { getAboutMe } from 'services/users'
 
 const Login: NextPage = () => {
 	const { data: session } = useSession()
@@ -15,6 +16,7 @@ const Login: NextPage = () => {
 				<div>{session.user?.email}</div>
 				<div>
 					<button onClick={() => signOut()}>Sign out</button>
+					<button onClick={() => getAboutMe()}>getAboutMe</button>
 				</div>
 			</>
 		)

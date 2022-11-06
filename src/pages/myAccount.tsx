@@ -1,35 +1,63 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import type { NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Grid from '@mui/material/Grid'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
+import Select from '@mui/material/Select'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import * as yup from 'yup'
+import { useFormik } from 'formik'
+import { getAboutMe, saveAboutMe } from 'services/users'
+import { ROUTES } from 'utils/routes'
 
 const MyAccount: NextPage = () => {
-	const [local, setAge] = useState('')
-	const { data: session, status } = useSession({
+	useSession({
 		required: true,
 		onUnauthenticated() {
-			// The user is not authenticated, handle it here.
+			window.location.href = ROUTES.LOGIN
 		}
 	})
+	const validationSchema = yup.object({
+		name: yup.string().required('Nome é obrigatório'),
+		email: yup
+			.string()
+			.email('Informe um email válido')
+			.required('Email é obrigatório')
+	})
 
-	console.log('session: ', session)
+	const formik = useFormik({
+		initialValues: {
+			name: '',
+			email: ''
+		},
+		validationSchema: validationSchema,
+		onSubmit: async (values) => {
+			saveAboutMe({
+				name: values.name,
+				email: values.email
+			})
+		},
+		enableReinitialize: true
+	})
 
-	if (status === 'loading') {
-		return <div>Loading or not authenticated...</div>
-	}
-
-	const handleChange = (event: SelectChangeEvent) => {
-		setAge(event.target.value as string)
-	}
+	useEffect(() => {
+		const fetchAboutMe = async () => {
+			const data = await getAboutMe()
+			formik.setValues({
+				name: data?.name || '',
+				email: data?.email || ''
+			})
+			console.log(data)
+		}
+		fetchAboutMe()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
 
 	return (
 		<div
@@ -48,23 +76,38 @@ const MyAccount: NextPage = () => {
 				</Grid>
 			</Box>
 
-			<Box component="form" noValidate autoComplete="off">
+			<Box
+				component="form"
+				noValidate
+				autoComplete="off"
+				onSubmit={formik.handleSubmit}
+			>
 				<Grid container direction="column" spacing={2}>
 					<Grid item xs={12}>
 						<TextField
 							id="outlined-basic"
 							label="Nome completo"
+							name="name"
 							variant="outlined"
 							fullWidth
+							value={formik.values.name}
+							onChange={formik.handleChange}
+							error={formik.touched.name && Boolean(formik.errors.name)}
+							helperText={formik.touched.name && formik.errors.name}
 						/>
 					</Grid>
 
 					<Grid item xs={12}>
 						<TextField
 							id="outlined-basic"
+							name="email"
 							label="E-mail"
 							variant="outlined"
 							fullWidth
+							value={formik.values.email}
+							onChange={formik.handleChange}
+							error={formik.touched.email && Boolean(formik.errors.email)}
+							helperText={formik.touched.email && formik.errors.email}
 						/>
 					</Grid>
 
@@ -85,10 +128,8 @@ const MyAccount: NextPage = () => {
 							<Select
 								labelId="demo-simple-select-autowidth-label"
 								id="demo-simple-select-autowidth"
-								value={local}
 								label="Localização"
 								fullWidth
-								onChange={handleChange}
 							>
 								<MenuItem value={10}>Belo Horizonte</MenuItem>
 								<MenuItem value={20}>São Paulo</MenuItem>
@@ -99,7 +140,12 @@ const MyAccount: NextPage = () => {
 
 					<Grid item xs={12}>
 						<Stack spacing={2} direction="row">
-							<Button fullWidth size={'large'} variant="contained">
+							<Button
+								fullWidth
+								size={'large'}
+								variant="contained"
+								type="submit"
+							>
 								Salvar
 							</Button>
 						</Stack>

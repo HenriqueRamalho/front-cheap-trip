@@ -1,11 +1,11 @@
-import axios from 'axios'
+import Client from 'services/client'
 
-import { SignupUser, SignupUserResponse } from './types'
-
-const axiosInstance = axios.create({
-	baseURL: process.env.NEXT_PUBLIC_API_CHEAP_TRIP,
-	timeout: 1000
-})
+import {
+	AboutMeResponse,
+	SaveAboutMe,
+	SignupUser,
+	SignupUserResponse
+} from './types'
 
 export const signupUser = async ({
 	name,
@@ -13,10 +13,34 @@ export const signupUser = async ({
 	password
 }: SignupUser): Promise<SignupUserResponse | undefined> => {
 	try {
-		const { data } = await axiosInstance.post('/users', {
+		const { data } = await Client.post('/users', {
 			name,
 			email,
 			password
+		})
+		return data
+	} catch (e) {
+		console.error(e)
+	}
+}
+
+export const getAboutMe = async (): Promise<AboutMeResponse | undefined> => {
+	try {
+		const { data } = await Client.get('/me')
+		return data
+	} catch (e) {
+		console.error(e)
+	}
+}
+
+export const saveAboutMe = async ({
+	name,
+	email
+}: SaveAboutMe): Promise<AboutMeResponse | undefined> => {
+	try {
+		const { data } = await Client.post('/me', {
+			name,
+			email
 		})
 		return data
 	} catch (e) {

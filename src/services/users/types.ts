@@ -24,3 +24,13 @@ export interface SaveUserLogin {
 	name: string
 	email: string
 }
+export interface AboutMeResponse {
+	_id: string
+	name: string
+	email: string
+}
+
+export interface SaveAboutMe {
+	name: string
+	email: string
+}
