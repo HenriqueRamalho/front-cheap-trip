@@ -11,7 +11,7 @@ const Login: NextPage = () => {
 		return (
 			<>
 				<Header />
-				<div>You're logged!</div>
+				<div>You are logged!</div>
 				<div>{session.user?.email}</div>
 				<div>
 					<button onClick={() => signOut()}>Sign out</button>
