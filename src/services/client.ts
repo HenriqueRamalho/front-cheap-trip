@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import axios from 'axios'
 import { getSession } from 'next-auth/react'
 
