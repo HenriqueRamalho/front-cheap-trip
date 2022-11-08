@@ -200,11 +200,6 @@ const Form = () => {
 								fullWidth
 							/>
 						</Grid>
-						<Grid item xs={12}>
-							<Typography variant="subtitle1" color="primary" align="right">
-								Valor total: <strong>R$ 0,00</strong>
-							</Typography>
-						</Grid>
 					</Grid>
 				</Grid>
 				<Grid item xs={12} md={6}>
