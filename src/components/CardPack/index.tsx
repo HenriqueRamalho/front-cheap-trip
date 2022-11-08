@@ -8,11 +8,21 @@ import HotelIcon from '@mui/icons-material/Hotel'
 import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive'
 import ExpenseScale from './ExpenseScale'
 
-interface CardPackProps {
+export interface CardPackProps {
+	imageUrl?: string
 	link?: string
+	tags?: string[]
+	title?: string
+	price?: number
 }
 
-export default function CardPack({ link = '' }: CardPackProps) {
+export default function CardPack({
+	imageUrl,
+	link = '',
+	tags,
+	title = '',
+	price = 0
+}: CardPackProps) {
 	return (
 		<Box sx={{ paddingX: 1 }}>
 			<Card sx={{ width: '100%' }}>
@@ -20,7 +30,7 @@ export default function CardPack({ link = '' }: CardPackProps) {
 					<CardMedia
 						component="img"
 						height="140"
-						image="https://media.tacdn.com/media/attractions-splice-spp-674x446/06/dd/dd/0b.jpg"
+						image={imageUrl}
 						alt="Salvador"
 					/>
 					<CardContent>
@@ -31,27 +41,20 @@ export default function CardPack({ link = '' }: CardPackProps) {
 								gap: 2
 							}}
 						>
-							<Box
-								sx={{
-									bgcolor: 'warning.main',
-									color: 'warning.contrastText',
-									py: 0.5,
-									px: 1,
-									borderRadius: 1
-								}}
-							>
-								6 Noites
-							</Box>
-							<Box
-								sx={{
-									bgcolor: 'warning.main',
-									color: 'warning.contrastText',
-									py: 0.5,
-									px: 1
-								}}
-							>
-								4 pessoas
-							</Box>
+							{tags?.map((item, key) => (
+								<Box
+									key={`${item}-${key}`}
+									sx={{
+										bgcolor: 'warning.main',
+										color: 'warning.contrastText',
+										py: 0.5,
+										px: 1,
+										borderRadius: 1
+									}}
+								>
+									{item}
+								</Box>
+							))}
 						</Box>
 						<Typography
 							gutterBottom
@@ -60,7 +63,7 @@ export default function CardPack({ link = '' }: CardPackProps) {
 							mt={1}
 							mb={2}
 						>
-							<strong>Pacote para Pelourinho</strong>
+							<strong>{title}</strong>
 						</Typography>
 						<Box
 							sx={{
@@ -88,7 +91,7 @@ export default function CardPack({ link = '' }: CardPackProps) {
 							Preço por pessoa
 						</Typography>
 						<Typography variant="h5" color="primary.main">
-							<strong>R$ 1.200</strong>
+							<strong>R$ {price}</strong>
 						</Typography>
 					</CardContent>
 				</CardActionArea>

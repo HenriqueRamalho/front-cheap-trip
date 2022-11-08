@@ -336,7 +336,7 @@ const NewGroup: NextPage = () => {
 						Grupo
 					</Typography>
 					<Typography id="modal-modal-description" sx={{ mt: 2 }}>
-						Novo grupo "{groupNameCreated}" criado com sucesso.
+						Novo grupo &quot;{groupNameCreated}&quot; criado com sucesso.
 					</Typography>
 				</Box>
 			</Modal>

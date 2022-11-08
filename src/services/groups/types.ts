@@ -1,4 +1,4 @@
-interface Group {
+export interface Group {
 	_id: string
 	title: string
 	participants: number
@@ -14,3 +14,8 @@ interface Group {
 export type CreateGroupResponse = Group
 
 export type CreateGroup = Omit<Group, '_id' | 'imageAddress' | 'idUser'>
+
+export interface ResponseGetGroups extends Group {
+	nights: number
+	destination: string
+}
