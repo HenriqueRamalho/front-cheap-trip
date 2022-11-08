@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import axios from 'axios'
-import { getSession } from 'next-auth/react'
+import { getSession, signOut } from 'next-auth/react'
 
 const ApiClient = () => {
 	const defaultOptions = {
@@ -28,6 +28,10 @@ const ApiClient = () => {
 		},
 		(error) => {
 			console.log(`error`, error)
+			if (error.response.status === 401) {
+				signOut()
+				window.location.href = '/login'
+			}
 		}
 	)
 
