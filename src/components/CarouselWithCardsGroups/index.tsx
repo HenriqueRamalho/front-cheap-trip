@@ -46,7 +46,7 @@ const CarouselWithCardsGroups = ({
 					>
 						<CardPack
 							imageUrl="https://media.tacdn.com/media/attractions-splice-spp-674x446/06/dd/dd/0b.jpg"
-							link={ROUTES.GO_TO_GROUP(1)}
+							link={ROUTES.GO_TO_GROUP('1')}
 							tags={['6 noites', '5 pessoas']}
 							title={item.title}
 							price={1200}

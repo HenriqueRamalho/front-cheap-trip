@@ -35,3 +35,14 @@ export const getGroups = async (): Promise<ResponseGetGroups[] | undefined> => {
 		console.error(e)
 	}
 }
+
+export const getGroupById = async (
+	id: string
+): Promise<ResponseGetGroups[] | undefined> => {
+	try {
+		const { data } = await Client.get(`/grupos-viagem/${id}`)
+		return data
+	} catch (e) {
+		console.error(e)
+	}
+}

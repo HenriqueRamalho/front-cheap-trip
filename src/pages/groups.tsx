@@ -63,7 +63,7 @@ const ListGroups: NextPage = () => {
 							<Grid item key={`${item}-${key}`} sx={{ marginBottom: 3 }}>
 								<CardPack
 									imageUrl={getImageByDestination(item.destination)}
-									link={ROUTES.GO_TO_GROUP(1)}
+									link={ROUTES.GO_TO_GROUP(item._id)}
 									tags={[
 										`${item.nights} noites`,
 										`${item.participants} pessoas`

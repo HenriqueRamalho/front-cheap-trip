@@ -9,6 +9,6 @@ export const ROUTES = {
 	DESTINY: '/destiny',
 	GO_TO_DESTINY: (id: number) => `/destiny/${id}`,
 	ALL_DESTINIES: '/destines',
-	GO_TO_GROUP: (id: number) => `/group/${id}`,
+	GO_TO_GROUP: (id: string) => `/group/${id}`,
 	ALL_GROUPS: '/groups'
 }
