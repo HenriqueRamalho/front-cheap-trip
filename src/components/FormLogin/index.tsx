@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { signIn } from 'next-auth/react'
 import {
 	Typography,
 	Button,
@@ -10,7 +11,6 @@ import {
 } from '@mui/material'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
-import { loginUser } from 'services/users'
 import { ROUTES } from 'utils/routes'
 
 const validationSchema = yup.object({
@@ -30,14 +30,13 @@ function FormLogin() {
 		},
 		validationSchema: validationSchema,
 		onSubmit: async (values) => {
-			try {
-				await loginUser({
-					email: values.email,
-					password: values.password
-				})
-				setIsShowLoginErorMessage(false)
-			} catch (e) {
-				console.error(e)
+			const response = await signIn('credentials', {
+				redirect: false,
+				email: values.email,
+				password: values.password
+			})
+			setIsShowLoginErorMessage(false)
+			if (response?.error) {
 				setIsShowLoginErorMessage(true)
 			}
 		}

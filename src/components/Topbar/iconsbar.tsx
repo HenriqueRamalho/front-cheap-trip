@@ -4,9 +4,13 @@ import { Button } from '@mui/material'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import LoginIcon from '@mui/icons-material/Login'
+import InputIcon from '@mui/icons-material/Input'
 import { ROUTES } from 'utils/routes'
+import { useSession } from 'next-auth/react'
 
 export default function Iconsbar() {
+	const { data: session } = useSession()
 	return (
 		<Grid
 			container
@@ -48,19 +52,50 @@ export default function Iconsbar() {
 					Salvos
 				</Button>
 			</Grid>
+
 			<Grid item>
-				<Button
-					variant="contained"
-					color="primary"
-					disableElevation
-					disableRipple
-					disableFocusRipple
-					href={ROUTES.MY_ACCOUNT}
-					startIcon={<AccountCircleIcon />}
-				>
-					Minha conta
-				</Button>
+				{session ? (
+					<Button
+						variant="contained"
+						color="primary"
+						disableElevation
+						disableRipple
+						disableFocusRipple
+						href={ROUTES.MY_ACCOUNT}
+						startIcon={<AccountCircleIcon />}
+					>
+						Minha conta
+					</Button>
+				) : (
+					<Button
+						variant="contained"
+						color="primary"
+						disableElevation
+						disableRipple
+						disableFocusRipple
+						href={ROUTES.LOGIN}
+						startIcon={<LoginIcon />}
+					>
+						Login
+					</Button>
+				)}
 			</Grid>
+
+			{!session ? (
+				<Grid item>
+					<Button
+						variant="contained"
+						color="primary"
+						disableElevation
+						disableRipple
+						disableFocusRipple
+						href={ROUTES.SIGNUP}
+						startIcon={<InputIcon />}
+					>
+						Signup
+					</Button>
+				</Grid>
+			) : null}
 		</Grid>
 	)
 }

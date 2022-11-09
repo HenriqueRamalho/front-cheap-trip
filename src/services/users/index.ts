@@ -1,23 +1,11 @@
-import axios from 'axios'
-
-const PREFIX_CHEAP_TRIP_STORAGE = 'cheap-trip'
-const KEY_SESSION_STORAGE_ID = `${PREFIX_CHEAP_TRIP_STORAGE}__id`
-const KEY_SESSION_STORAGE_EMAIL = `${PREFIX_CHEAP_TRIP_STORAGE}__email`
-const KEY_SESSION_STORAGE_NAME = `${PREFIX_CHEAP_TRIP_STORAGE}__name`
-const KEY_SESSION_STORAGE_TOKEN = `${PREFIX_CHEAP_TRIP_STORAGE}__token`
+import Client from 'services/client'
 
 import {
-	LoginUser,
+	AboutMeResponse,
+	SaveAboutMe,
 	SignupUser,
-	SignupUserResponse,
-	LoginUserResponse,
-	SaveUserLogin
+	SignupUserResponse
 } from './types'
-
-const axiosInstance = axios.create({
-	baseURL: process.env.NEXT_PUBLIC_API_CHEAP_TRIP,
-	timeout: 1000
-})
 
 export const signupUser = async ({
 	name,
@@ -25,7 +13,7 @@ export const signupUser = async ({
 	password
 }: SignupUser): Promise<SignupUserResponse | undefined> => {
 	try {
-		const { data } = await axiosInstance.post('/users', {
+		const { data } = await Client.post('/users', {
 			name,
 			email,
 			password
@@ -36,41 +24,26 @@ export const signupUser = async ({
 	}
 }
 
-export const loginUser = async ({
-	email,
-	password
-}: LoginUser): Promise<LoginUserResponse | undefined> => {
-	const { data } = await axiosInstance.post('/login', {
-		email,
-		password
-	})
-
-	saveUserLoginOnSessionStorage({
-		_id: data._id,
-		email: data.email,
-		name: data.name,
-		token: data.token
-	})
-	return data
+export const getAboutMe = async (): Promise<AboutMeResponse | undefined> => {
+	try {
+		const { data } = await Client.get('/me')
+		return data
+	} catch (e) {
+		console.error(e)
+	}
 }
 
-const saveUserLoginOnSessionStorage = ({
-	_id,
-	email,
+export const saveAboutMe = async ({
 	name,
-	token
-}: SaveUserLogin) => {
-	sessionStorage.setItem(KEY_SESSION_STORAGE_ID, _id)
-	sessionStorage.setItem(KEY_SESSION_STORAGE_EMAIL, email)
-	sessionStorage.setItem(KEY_SESSION_STORAGE_NAME, name)
-	sessionStorage.setItem(KEY_SESSION_STORAGE_TOKEN, token)
-}
-
-export const getUserLoginOnSessionStorage = (): SaveUserLogin => {
-	return {
-		_id: sessionStorage.getItem(KEY_SESSION_STORAGE_ID) || '',
-		email: sessionStorage.getItem(KEY_SESSION_STORAGE_EMAIL) || '',
-		name: sessionStorage.getItem(KEY_SESSION_STORAGE_NAME) || '',
-		token: sessionStorage.getItem(KEY_SESSION_STORAGE_TOKEN) || ''
+	email
+}: SaveAboutMe): Promise<AboutMeResponse | undefined> => {
+	try {
+		const { data } = await Client.post('/me', {
+			name,
+			email
+		})
+		return data
+	} catch (e) {
+		console.error(e)
 	}
 }

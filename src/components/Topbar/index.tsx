@@ -40,7 +40,7 @@ export default function Topbar() {
 							borderRadius: '0px 0px 0px 80px'
 						}}
 					>
-						<Iconsbar></Iconsbar>
+						<Iconsbar />
 					</Grid>
 				</Grid>
 			</Box>

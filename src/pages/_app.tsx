@@ -1,3 +1,4 @@
+import { SessionProvider } from 'next-auth/react'
 import React from 'react'
 import Head from 'next/head'
 import { AppProps } from 'next/app'
@@ -24,24 +25,26 @@ const MyApp = (props: AppProps) => {
 	}, [])
 
 	return (
-		<React.Fragment>
-			<Head>
-				<title>Cheap trip</title>
-				<meta
-					name="viewport"
-					content="minimum-scale=1, initial-scale=1, width=device-width"
-				/>
-			</Head>
-			<ThemeProvider theme={theme}>
-				<CssBaseline />
-				<GlobalStyles styles={globalCss} />
-				<Topbar></Topbar>
-				<main>
-					<Component {...pageProps} />
-				</main>
-				<Footer></Footer>
-			</ThemeProvider>
-		</React.Fragment>
+		<>
+			<SessionProvider session={pageProps.session}>
+				<Head>
+					<title>Cheap trip</title>
+					<meta
+						name="viewport"
+						content="minimum-scale=1, initial-scale=1, width=device-width"
+					/>
+				</Head>
+				<ThemeProvider theme={theme}>
+					<CssBaseline />
+					<GlobalStyles styles={globalCss} />
+					<Topbar />
+					<main>
+						<Component {...pageProps} />
+					</main>
+					<Footer></Footer>
+				</ThemeProvider>
+			</SessionProvider>
+		</>
 	)
 }
 

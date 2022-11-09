@@ -11,11 +11,6 @@ export interface SignupUserResponse {
 	email: string
 }
 
-export interface LoginUser {
-	email: string
-	password: string
-}
-
 export interface LoginUserResponse {
 	_id: string
 	token: string
@@ -26,6 +21,16 @@ export interface LoginUserResponse {
 export interface SaveUserLogin {
 	_id: string
 	token: string
+	name: string
+	email: string
+}
+export interface AboutMeResponse {
+	_id: string
+	name: string
+	email: string
+}
+
+export interface SaveAboutMe {
 	name: string
 	email: string
 }
