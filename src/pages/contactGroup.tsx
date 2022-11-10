@@ -7,9 +7,13 @@ import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Image from 'next/image'
+import { useSession } from 'next-auth/react'
 
 const ContactGroup: NextPage = () => {
 	const [isMessengeSent, setIsMessengeSent] = React.useState(false)
+	const { data: session } = useSession()
+
+	console.log(session)
 
 	return (
 		<div
@@ -54,7 +58,7 @@ const ContactGroup: NextPage = () => {
 						<Grid container>
 							<Grid item xs={12} pb={4}>
 								<Typography variant="h2" align="center">
-									Solicitar ingressar no grupo
+									Contactar grupo
 								</Typography>
 							</Grid>
 						</Grid>
@@ -67,6 +71,8 @@ const ContactGroup: NextPage = () => {
 									id="outlined-basic"
 									label="Nome completo"
 									variant="outlined"
+									value={session?.user.name || ''}
+									disabled
 									fullWidth
 								/>
 							</Grid>
@@ -76,8 +82,10 @@ const ContactGroup: NextPage = () => {
 									id="outlined-basic"
 									label="E-mail"
 									variant="outlined"
-									fullWidth
 									type="email"
+									value={session?.user.email || ''}
+									disabled
+									fullWidth
 								/>
 							</Grid>
 
