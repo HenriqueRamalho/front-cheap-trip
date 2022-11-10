@@ -8,6 +8,7 @@ import SimilarDestinations from 'components/SimilarDestinations'
 import CovidRecommendation from './CovidRecommendation'
 import Form from './Form'
 import { getGroupById } from 'services/groups'
+import { useSession } from 'next-auth/react'
 interface Group {
 	_id: string
 	title: string
@@ -26,6 +27,7 @@ interface GroupProps {
 }
 
 const Group: NextPage<GroupProps> = ({ group }) => {
+	const { data: session } = useSession()
 	return (
 		<div>
 			<Box
@@ -58,12 +60,14 @@ const Group: NextPage<GroupProps> = ({ group }) => {
 				</Box>
 			</Box>
 			<Form
+				idGroup={group._id}
 				destiny={group.destination}
 				price={group.price}
 				participants={group.participants}
 				departureDate={group.departureDate}
 				returnDate={group.returnDate}
 				description={group.description}
+				isUserAdmin={group.idUser === session?.user._id}
 			/>
 			<CovidRecommendation />
 			<Box

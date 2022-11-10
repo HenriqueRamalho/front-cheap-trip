@@ -1,6 +1,11 @@
 import Client from 'services/client'
 
-import { CreateGroup, CreateGroupResponse, ResponseGetGroups } from './types'
+import {
+	CreateGroup,
+	CreateGroupResponse,
+	ResponseDeleteGroup,
+	ResponseGetGroups
+} from './types'
 
 export const saveGroup = async ({
 	title,
@@ -41,6 +46,17 @@ export const getGroupById = async (
 ): Promise<ResponseGetGroups[] | undefined> => {
 	try {
 		const { data } = await Client.get(`/grupos-viagem/${id}`)
+		return data
+	} catch (e) {
+		console.error(e)
+	}
+}
+
+export const deleteGroup = async (
+	id: string
+): Promise<ResponseDeleteGroup[] | undefined> => {
+	try {
+		const { data } = await Client.delete(`/grupos-viagem/${id}`)
 		return data
 	} catch (e) {
 		console.error(e)

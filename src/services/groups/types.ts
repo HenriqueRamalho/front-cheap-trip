@@ -19,3 +19,7 @@ export interface ResponseGetGroups extends Group {
 	nights: number
 	destination: string
 }
+
+export interface ResponseDeleteGroup {
+	message: string
+}
