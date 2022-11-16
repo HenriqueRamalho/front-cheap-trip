@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Box, Grid, Typography } from '@mui/material'
-import TextField from '@mui/material/TextField'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import Slider from '@mui/material/Slider'
 

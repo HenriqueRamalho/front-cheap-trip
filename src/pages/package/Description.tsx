@@ -6,10 +6,9 @@ import { ROUTES } from 'utils/routes'
 
 interface DescriptionProps {
 	description: string
-	destiny: string
 }
 
-const Description = ({ description, destiny }: DescriptionProps) => {
+const Description = ({ description }: DescriptionProps) => {
 	return (
 		<Box
 			sx={{
