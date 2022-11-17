@@ -47,6 +47,24 @@ const getImageByDestination = (destination: string) => {
 }
 
 const Index: NextPage<PackageProps> = ({ packages }) => {
+	const [tripPackages, setTripPackages] = React.useState<Package[]>(packages)
+	const [search, setSearch] = React.useState<string>('')
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setSearch(event.target.value)
+	}
+
+	React.useEffect(() => {
+		if (search.length >= 3) {
+			setTripPackages(
+				packages.filter((item) =>
+					item.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+				)
+			)
+			return
+		}
+		setTripPackages(packages)
+	}, [search, packages])
 	return (
 		<div>
 			<Box
@@ -62,6 +80,8 @@ const Index: NextPage<PackageProps> = ({ packages }) => {
 				<TextField
 					id="input-with-icon-textfield"
 					variant="outlined"
+					value={search}
+					onChange={handleChange}
 					fullWidth
 					InputProps={{
 						startAdornment: (
@@ -83,23 +103,30 @@ const Index: NextPage<PackageProps> = ({ packages }) => {
 				}}
 			>
 				<Grid container>
-					{packages.map((item, key) => (
-						<Grid
-							item
-							key={`${item}-${key}`}
-							sx={{ marginBottom: 3 }}
-							xs={12}
-							md={4}
-						>
-							<CardPack
-								imageUrl={getImageByDestination(item.destination)}
-								link={ROUTES.GO_TO_PACKAGE(item._id)}
-								tags={[`${item.nights} noites`, `${item.participants} pessoas`]}
-								title={item.title}
-								price={1200}
-							/>
-						</Grid>
-					))}
+					{tripPackages.length > 0 ? (
+						tripPackages.map((item, key) => (
+							<Grid
+								item
+								key={`${item}-${key}`}
+								sx={{ marginBottom: 3 }}
+								xs={12}
+								md={4}
+							>
+								<CardPack
+									imageUrl={getImageByDestination(item.destination)}
+									link={ROUTES.GO_TO_PACKAGE(item._id)}
+									tags={[
+										`${item.nights} noites`,
+										`${item.participants} pessoas`
+									]}
+									title={item.title}
+									price={1200}
+								/>
+							</Grid>
+						))
+					) : (
+						<Typography variant="body1">Nenhum resultado encontrado</Typography>
+					)}
 				</Grid>
 			</Box>
 
