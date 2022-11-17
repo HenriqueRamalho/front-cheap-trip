@@ -46,7 +46,7 @@ export default function Iconsbar() {
 					disableElevation
 					disableRipple
 					disableFocusRipple
-					href={ROUTES.NEW_GROUP}
+					href={ROUTES.SAVES}
 					startIcon={<BookmarkIcon />}
 				>
 					Salvos

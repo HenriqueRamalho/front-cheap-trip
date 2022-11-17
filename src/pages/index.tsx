@@ -9,6 +9,7 @@ import DontYouFindYourDestiny from 'components/DontYouFindYourDestiny'
 import { getPackages } from 'services/package'
 import CardPack from 'components/CardPack'
 import { ROUTES } from 'utils/routes'
+import { getImageByDestination } from 'utils/images'
 
 interface Package {
 	_id: string
@@ -26,24 +27,6 @@ interface Package {
 
 interface PackageProps {
 	packages: Package[]
-}
-
-const getImageByDestination = (destination: string) => {
-	const defaultImage = 'https://via.placeholder.com/500'
-	const images = new Map()
-	images.set(
-		'gramado',
-		'https://media.tacdn.com/media/attractions-splice-spp-674x446/06/dd/dd/0b.jpg'
-	)
-	images.set(
-		'rio_de_janeiro',
-		'https://media.tacdn.com/media/attractions-splice-spp-674x446/06/dd/dd/0b.jpg'
-	)
-	images.set(
-		'salvador',
-		'https://media.tacdn.com/media/attractions-splice-spp-674x446/06/dd/dd/0b.jpg'
-	)
-	return images.has(destination) ? images.get(destination) : defaultImage
 }
 
 const Index: NextPage<PackageProps> = ({ packages }) => {
@@ -76,7 +59,7 @@ const Index: NextPage<PackageProps> = ({ packages }) => {
 					paddingBottom: 4
 				}}
 			>
-				<Typography variant="h2">Procure por destinos ou grupos</Typography>
+				<Typography variant="h2">Procure por pacotes</Typography>
 				<TextField
 					id="input-with-icon-textfield"
 					variant="outlined"
