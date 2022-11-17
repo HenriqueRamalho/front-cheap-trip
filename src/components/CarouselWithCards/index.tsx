@@ -39,7 +39,7 @@ const CarouselWithCards = ({
 			<Slider {...settings}>
 				{[1, 2, 3, 4, 5, 6].map((item) => (
 					<div key={item} style={{ width: 300, padding: '0 0' }}>
-						<CardPack link={`${ROUTES.GO_TO_PACKAGE(1)}`} />
+						<CardPack link={`${ROUTES.GO_TO_PACKAGE(`1`)}`} />
 					</div>
 				))}
 			</Slider>
