@@ -1,14 +1,53 @@
 import * as React from 'react'
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import BottomNavbar from 'components/BottomNavbar'
-import { Box, InputAdornment, Typography } from '@mui/material'
-import CarouselWithCards from 'components/CarouselWithCards'
+import { Box, Grid, InputAdornment, Typography } from '@mui/material'
 import TextField from '@mui/material/TextField'
 import SearchIcon from '@mui/icons-material/Search'
 import DiscoveryDestinations from 'components/DiscoveryDestinations'
 import DontYouFindYourDestiny from 'components/DontYouFindYourDestiny'
+import { getPackages } from 'services/package'
+import CardPack from 'components/CardPack'
+import { ROUTES } from 'utils/routes'
+import { getImageByDestination } from 'utils/images'
 
-const Index: NextPage = () => {
+interface Package {
+	_id: string
+	title: string
+	participants: number
+	destination: string
+	description: string
+	imageAddress: string
+	departureDate: string
+	returnDate: string
+	price: number
+	idUser: string
+	nights: number
+}
+
+interface PackageProps {
+	packages: Package[]
+}
+
+const Index: NextPage<PackageProps> = ({ packages }) => {
+	const [tripPackages, setTripPackages] = React.useState<Package[]>(packages)
+	const [search, setSearch] = React.useState<string>('')
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setSearch(event.target.value)
+	}
+
+	React.useEffect(() => {
+		if (search.length >= 3) {
+			setTripPackages(
+				packages.filter((item) =>
+					item.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+				)
+			)
+			return
+		}
+		setTripPackages(packages)
+	}, [search, packages])
 	return (
 		<div>
 			<Box
@@ -20,10 +59,12 @@ const Index: NextPage = () => {
 					paddingBottom: 4
 				}}
 			>
-				<Typography variant="h2">Procure por destinos ou grupos</Typography>
+				<Typography variant="h2">Procure por pacotes</Typography>
 				<TextField
 					id="input-with-icon-textfield"
 					variant="outlined"
+					value={search}
+					onChange={handleChange}
 					fullWidth
 					InputProps={{
 						startAdornment: (
@@ -44,15 +85,34 @@ const Index: NextPage = () => {
 					paddingX: 2
 				}}
 			>
-				<Typography variant="h2">Pacotes de viagem em destaque</Typography>
+				<Grid container>
+					{tripPackages.length > 0 ? (
+						tripPackages.map((item, key) => (
+							<Grid
+								item
+								key={`${item}-${key}`}
+								sx={{ marginBottom: 3 }}
+								xs={12}
+								md={4}
+							>
+								<CardPack
+									imageUrl={getImageByDestination(item.destination)}
+									link={ROUTES.GO_TO_PACKAGE(item._id)}
+									tags={[
+										`${item.nights} noites`,
+										`${item.participants} pessoas`
+									]}
+									title={item.title}
+									price={1200}
+								/>
+							</Grid>
+						))
+					) : (
+						<Typography variant="body1">Nenhum resultado encontrado</Typography>
+					)}
+				</Grid>
 			</Box>
 
-			<Box sx={{ py: 1, paddingTop: 3 }}>
-				<CarouselWithCards />
-			</Box>
-			<Box sx={{ py: 1 }}>
-				<CarouselWithCards />
-			</Box>
 			<Box>
 				<DiscoveryDestinations />
 			</Box>
@@ -60,6 +120,11 @@ const Index: NextPage = () => {
 			<BottomNavbar />
 		</div>
 	)
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+	const packages = await getPackages()
+	return { props: { packages } }
 }
 
 export default Index
