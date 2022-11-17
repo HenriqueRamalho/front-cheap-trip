@@ -67,10 +67,7 @@ const Destiny: NextPage<PackageProps> = ({ packageTrip }) => {
 				returnDate={packageTrip.returnDate}
 				price={packageTrip.price}
 			/>
-			<Description
-				description={packageTrip.description}
-				destiny={packageTrip.destination}
-			/>
+			<Description description={packageTrip.description} />
 			<CovidRecommendation destiny={packageTrip.destination} />
 			<OthersPackages />
 			<Box>
